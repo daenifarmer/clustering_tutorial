@@ -6,6 +6,7 @@ the same connected component, using NetworkX's UnionFind implementation.
 
 import matplotlib.pyplot as plt
 import networkx as nx
+from union_find import UnionFind
 
 
 def draw_cluster_identities(unique_labels, to_be_merged, fname=None):
@@ -52,11 +53,12 @@ def get_representative_labels(unique_labels, to_be_merged):
     dict
         Mapping from each label to its representative label.
     """
-    uf = nx.utils.UnionFind(unique_labels)
+    uf = UnionFind(unique_labels)
+
     for u, v in to_be_merged:
         uf.union(u, v)
 
-    return {l: uf[l] for l in unique_labels}
+    return {l: uf.find(l) for l in unique_labels}
 
 if __name__ == "__main__":
     print("=== Cluster Merging Demo (Union-Find) ===\n")
