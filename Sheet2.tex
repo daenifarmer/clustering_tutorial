@@ -1,0 +1,115 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{parskip}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=2.8cm, right=2.8cm}
+
+\begin{document}
+
+% ---------- Header ----------
+\begin{minipage}[t]{0.55\textwidth}
+  Institut für Computerphysik\\
+  Universität Stuttgart
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+  \raggedleft
+  Physik auf dem Computer\\
+  SS 2026
+\end{minipage}
+
+\rule{\textwidth}{0.4pt}
+
+\vspace{0.6em}
+
+{\LARGE\bfseries Übungsblatt 2: Perkolation und Clustereigenschaften}
+
+\vspace{1em}
+
+% ---------- Intro ----------
+In diesem Übungsblatt implementieren Sie zunächst den Hoshen-Kopelman-Algorithmus
+zur Cluster-Identifizierung und untersuchen anschließend drei charakteristische
+Größen des Phasenübergangs am kritischen Punkt numerisch.
+
+Für ein zweidimensionales Quadratgitter liegt der kritische Punkt bei $p_c \approx 0.5927$.
+
+
+\vspace{0.5em}
+
+% ---------- Tasks ----------
+\begin{enumerate}
+
+% ---- 1 ----
+\item Implementieren Sie den \textbf{Hoshen-Kopelman-Algorithmus} zur Cluster"=Beschriftung.
+
+\textbf{Bonusaufgabe:} Implementieren Sie \texttt{UnionFind} selbst, alternativ hilft hier bspw. Networkx.
+
+% ---- 2 ----
+\item Berechnen Sie die \textbf{Clustergrößenverteilung}
+\[
+  n_s(p) \;=\; \frac{\text{Anzahl Cluster der Größe }s}{L^2}
+\]
+für $p = p_c \approx 0.5927$ auf einem $200\times 200$-Gitter.
+Mitteln Sie über mindestens 200 unabhängige Konfigurationen.
+
+Tipp: Perkolierendes Cluster ausschließen!
+
+Stellen Sie $n_s$ in einem doppelt-logarithmischen Diagramm dar.
+Am kritischen Punkt gilt das Potenzgesetz
+\[
+  n_s(p_c) \;\propto\; s^{-\tau}, \qquad \tau = \tfrac{187}{91} \approx 2.055\,,
+\]
+mit einem universellen Exponenten, der nur von der Raumdimension abhängt.
+Ergänzen Sie Ihren Plot um diese Referenzgerade.
+Können Sie den Zusammenhang bestätigen?
+
+Wiederholen Sie die Rechnung für $L = 50,\,100,\,200$ in einem gemeinsamen Plot.
+Was beobachten Sie und warum?
+
+% ---- 3 ----
+\item Berechnen Sie die \textbf{mittlere Clustergröße}
+\[
+  S(p) \;=\; \frac{\displaystyle\sum_s s^2\, n_s(p)}{\displaystyle\sum_s s\, n_s(p)},
+\]
+wobei die Summe nur über \emph{nicht}-perkolierende Cluster läuft.
+$S(p)$ divergiert am kritischen Punkt, da die typische Clustergröße dort unbegrenzt
+anwächst.
+
+Plotten Sie $S(p)$ als Funktion von $p \in [0.3,\,0.75]$
+für die Gittergrößen $L = 32,\,64,\,128$.
+Mitteln Sie pro $p$-Wert über mindestens 100 Konfigurationen.
+
+% ---- 4 ----
+\item Die \textbf{Dichte des perkolierenden Clusters}
+\[
+  P(p) \;=\; \frac{\text{Größe des perkolierenden Clusters}}{\text{Anzahl besetzter Plätze}}
+\]
+ist der Ordnungsparameter des Phasenübergangs: $P = 0$ für $p < p_c$ und $P > 0$
+für $p > p_c$.
+Falls kein perkolierender Cluster existiert, setzen Sie $P = 0$.
+
+Plotten Sie $P(p)$ für dieselben Gittergrößen und $p$-Werte wie in Aufgabe~3.
+
+% ---- 5 ----
+\item[\textbf{5.}] \textbf{Bestimmung von $p_c$}
+
+Der kritische Punkt lässt sich aus den Plots der Aufgaben 3 und 4 schätzen.
+ggf. als Hinweis:
+\begin{itemize}
+  \item \textit{Aus $S(p)$:} Das Maximum von $S(p)$ verschiebt sich mit wachsendem $L$
+        gegen $p_c$.
+  \item \textit{Aus $P(p)$:} Die Kurven für verschiedene $L$ schneiden sich näherungsweise
+        bei $p_c$, da $P(p_c, L)$ schwach $L$-abhängig ist.
+\end{itemize}
+Schätzen Sie $p_c$ aus beiden Plots und vergleichen Sie mit dem theoretischen Wert
+$p_c \approx 0.5927$.
+Welche Methode ist genauer, und warum?
+
+\end{enumerate}
+
+\end{document}
