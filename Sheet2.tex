@@ -45,9 +45,7 @@ Für ein zweidimensionales Quadratgitter liegt der kritische Punkt bei $p_c \app
 \begin{enumerate}
 
 % ---- 1 ----
-\item Implementieren Sie den \textbf{Hoshen-Kopelman-Algorithmus} zur Cluster"=Beschriftung.
-
-\textbf{Bonusaufgabe:} Implementieren Sie \texttt{UnionFind} selbst, alternativ hilft hier bspw. Networkx.
+\item Implementieren Sie den \textbf{Hoshen-Kopelman-Algorithmus} zur Cluster"=Beschriftung. Implementieren Sie dabei \textbf{UnionFind} selbst.
 
 % ---- 2 ----
 \item Berechnen Sie die \textbf{Clustergrößenverteilung}
@@ -84,31 +82,34 @@ Plotten Sie $S(p)$ als Funktion von $p \in [0.3,\,0.75]$
 für die Gittergrößen $L = 32,\,64,\,128$.
 Mitteln Sie pro $p$-Wert über mindestens 100 Konfigurationen.
 
-% ---- 4 ----
-\item Die \textbf{Dichte des perkolierenden Clusters}
-\[
-  P(p) \;=\; \frac{\text{Größe des perkolierenden Clusters}}{\text{Anzahl besetzter Plätze}}
-\]
-ist der Ordnungsparameter des Phasenübergangs: $P = 0$ für $p < p_c$ und $P > 0$
-für $p > p_c$.
-Falls kein perkolierender Cluster existiert, setzen Sie $P = 0$.
-
-Plotten Sie $P(p)$ für dieselben Gittergrößen und $p$-Werte wie in Aufgabe~3.
-
-% ---- 5 ----
-\item[\textbf{5.}] \textbf{Bestimmung von $p_c$}
-
-Der kritische Punkt lässt sich aus den Plots der Aufgaben 3 und 4 schätzen.
-ggf. als Hinweis:
-\begin{itemize}
-  \item \textit{Aus $S(p)$:} Das Maximum von $S(p)$ verschiebt sich mit wachsendem $L$
-        gegen $p_c$.
-  \item \textit{Aus $P(p)$:} Die Kurven für verschiedene $L$ schneiden sich näherungsweise
-        bei $p_c$, da $P(p_c, L)$ schwach $L$-abhängig ist.
-\end{itemize}
-Schätzen Sie $p_c$ aus beiden Plots und vergleichen Sie mit dem theoretischen Wert
+Schätzen Sie $p_c$ aus dem Plot und vergleichen Sie mit dem theoretischen Wert
 $p_c \approx 0.5927$.
-Welche Methode ist genauer, und warum?
+
+% % ---- 4 ----
+% \item Die \textbf{Dichte des perkolierenden Clusters}
+% \[
+%   P(p) \;=\; \frac{\text{Größe des perkolierenden Clusters}}{\text{Anzahl besetzter Plätze}}
+% \]
+% ist der Ordnungsparameter des Phasenübergangs: $P = 0$ für $p < p_c$ und $P > 0$
+% für $p > p_c$.
+% Falls kein perkolierender Cluster existiert, setzen Sie $P = 0$.
+
+% Plotten Sie $P(p)$ für dieselben Gittergrößen und $p$-Werte wie in Aufgabe~3.
+
+% % ---- 5 ----
+% \item[\textbf{5.}] \textbf{Bestimmung von $p_c$}
+
+% Der kritische Punkt lässt sich aus den Plots der Aufgaben 3 und 4 schätzen.
+% ggf. als Hinweis:
+% \begin{itemize}
+%   \item \textit{Aus $S(p)$:} Das Maximum von $S(p)$ verschiebt sich mit wachsendem $L$
+%         gegen $p_c$.
+%   \item \textit{Aus $P(p)$:} Die Kurven für verschiedene $L$ schneiden sich näherungsweise
+%         bei $p_c$, da $P(p_c, L)$ schwach $L$-abhängig ist.
+% \end{itemize}
+% Schätzen Sie $p_c$ aus beiden Plots und vergleichen Sie mit dem theoretischen Wert
+% $p_c \approx 0.5927$.
+% Welche Methode ist genauer, und warum?
 
 \end{enumerate}
 
